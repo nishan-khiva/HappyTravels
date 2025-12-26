@@ -106,7 +106,7 @@ export default function Navbar() {
           {/* Social Icons */}
           <div className="flex justify-center gap-6 py-4 bg-gray-50">
             <a
-              href="https://www.facebook.com/gurbeer.johal"
+              href="https://www.facebook.com//satender.singh.5602728"
               target="_blank"
               rel="noopener noreferrer"
               className="text-[#1877F2] hover:scale-110 transition"
@@ -115,7 +115,7 @@ export default function Navbar() {
             </a>
 
             <a
-              href="https://www.instagram.com/susrstrust/"
+              href="https://www.instagram.com/satender13_/"
               target="_blank"
               rel="noopener noreferrer"
               className="text-[#E4405F] hover:scale-110 transition"
@@ -124,7 +124,7 @@ export default function Navbar() {
             </a>
 
             <a
-              href="https://wa.me/919876543210"
+              href="https://wa.me/918077424137"
               target="_blank"
               rel="noopener noreferrer"
               className="text-[#25D366] hover:scale-110 transition"
