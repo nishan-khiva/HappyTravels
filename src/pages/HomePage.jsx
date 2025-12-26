@@ -11,8 +11,6 @@ export default function LandingPage() {
             <header className="flex justify-between items-center w-full   bg-yellow-400">
                 <Navbar />
             </header>
-
-
             {/* Hero Section */}
             <section className="bg-[#fdc700] text-gray-900 py-20 px-6 text-center">
                 <h2 className="text-4xl font-bold mb-4">All India Taxi Service</h2>
@@ -66,7 +64,7 @@ export default function LandingPage() {
                     </div>
                     <div className="bg-white p-6 rounded-xl shadow flex flex-col items-center gap-4">
                         <Clock className="text-yellow-500" size={40} />
-                        <span>24x7 Support</span>
+                        <span>24x7 aSupport</span>
                     </div>
                 </div>
             </section>
