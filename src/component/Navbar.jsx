@@ -87,20 +87,19 @@ export default function Navbar() {
           {/* Menu Links */}
           <div className="divide-y">
             {[
-              { name: "Home", link: "/home" },
+              { name: "Home", link: "/" },
               { name: "Destinations", link: "/destination" },
               { name: "Packages", link: "/package" },
               { name: "Custom Trip", link: "/customtrip" },
-              // { name: "Contact", link: "/contact" },
             ].map((item) => (
-              <a
+              <Link
                 key={item.name}
-                href={item.link}
+                to={item.link}
                 className="flex items-center justify-between px-5 py-4 font-semibold text-gray-800 hover:bg-gray-50 transition"
               >
                 {item.name}
                 <span className="text-gray-400">›</span>
-              </a>
+              </Link>
             ))}
           </div>
 
