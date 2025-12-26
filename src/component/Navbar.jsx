@@ -87,10 +87,10 @@ export default function Navbar() {
           {/* Menu Links */}
           <div className="divide-y">
             {[
-              { name: "Home", link: "/" },
-              { name: "Destinations", link: "/destinations" },
+              { name: "Home", link: "/home" },
+              { name: "Destinations", link: "/destination" },
               { name: "Packages", link: "/packages" },
-              { name: "Custom Trip", link: "/custom-trip" },
+              { name: "Custom Trip", link: "/customtrip" },
               { name: "Contact", link: "/contact" },
             ].map((item) => (
               <a
