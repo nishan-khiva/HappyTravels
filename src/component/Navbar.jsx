@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Menu, X } from "lucide-react";
 import { FaFacebookF, FaInstagram, FaWhatsapp } from "react-icons/fa";
 import { IoMdCall } from "react-icons/io";
+import { Link } from "react-router-dom";
 
 export default function Navbar() {
   const [open, setOpen] = useState(false);
@@ -14,11 +15,11 @@ export default function Navbar() {
 
         {/* Desktop Menu */}
         <nav className="hidden md:flex items-center gap-8 font-medium text-white">
-          <a href="/" className="hover:opacity-80 transition">Home</a>
-          <a href="/destinations" className="hover:opacity-80 transition">Destinations</a>
-          <a href="/packages" className="hover:opacity-80 transition">Packages</a>
-          <a href="/custom-trip" className="hover:opacity-80 transition">Custom Trip</a>
-          <a href="/contact" className="hover:opacity-80 transition">Contact</a>
+          <Link to="/home" className="hover:opacity-80 transition">Home</Link>
+          <Link to="/destination" className="hover:opacity-80 transition">Destinations</Link>
+          <Link to="/package" className="hover:opacity-80 transition">Packages</Link>
+          <Link to="/customtrip" className="hover:opacity-80 transition">Custom Trip</Link>
+          {/* <a href="/contact" className="hover:opacity-80 transition">Contact</a> */}
 
           <span className="flex items-center gap-3 bg-black text-white px-4 py-2 rounded-full shadow-md hover:shadow-lg transition">
 
