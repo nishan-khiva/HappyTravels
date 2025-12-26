@@ -1,6 +1,8 @@
-import { Phone, MessageCircle, Car, MapPin, ShieldCheck, UserCheck, DollarSign, Clock } from "lucide-react";
+import { Phone, MessageCircle, Car, MapPin, ShieldCheck, UserCheck, DollarSign, Clock, Book } from "lucide-react";
 import { ImageSlider } from "../component/ImageSlider";
 import Navbar from "../component/Navbar";
+import { BookingForm } from "../component/BookingForm";
+
 export default function LandingPage() {
 
     return (
@@ -12,7 +14,7 @@ export default function LandingPage() {
 
 
             {/* Hero Section */}
-            <section className="bg-yellow-400 text-gray-900 py-20 px-6 text-center">
+            <section className="bg-[#fdc700] text-gray-900 py-20 px-6 text-center">
                 <h2 className="text-4xl font-bold mb-4">All India Taxi Service</h2>
                 <p className="text-lg mb-6">Safe • Reliable • Affordable Rides Across India</p>
                 <a
@@ -21,6 +23,10 @@ export default function LandingPage() {
                 >
                     <MessageCircle /> Book on WhatsApp
                 </a>
+            </section>
+
+            <section>
+                <BookingForm />
             </section>
 
             {/* Services */}
