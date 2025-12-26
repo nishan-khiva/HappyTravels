@@ -89,9 +89,9 @@ export default function Navbar() {
             {[
               { name: "Home", link: "/home" },
               { name: "Destinations", link: "/destination" },
-              { name: "Packages", link: "/packages" },
+              { name: "Packages", link: "/package" },
               { name: "Custom Trip", link: "/customtrip" },
-              { name: "Contact", link: "/contact" },
+              // { name: "Contact", link: "/contact" },
             ].map((item) => (
               <a
                 key={item.name}
