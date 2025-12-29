@@ -15,7 +15,7 @@ const packagesData = [
     {
         id: 2,
         category: "Pilgrimage",
-        name: "Badrinath Dham Yatra",
+        name: "Tajmahal",
         duration: "4 Days / 3 Nights",
         price: "₹10,499",
         image: "https://images.unsplash.com/photo-1524492412937-b28074a5d7da",
