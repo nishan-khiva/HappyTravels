@@ -2,6 +2,7 @@ import { Phone, MessageCircle, Car, MapPin, ShieldCheck, UserCheck, DollarSign, 
 import { ImageSlider } from "../component/ImageSlider";
 import Navbar from "../component/Navbar";
 import { BookingForm } from "../component/BookingForm";
+import { Link } from "react-router-dom";
 
 export default function LandingPage() {
 
@@ -30,23 +31,89 @@ export default function LandingPage() {
             {/* Services */}
             <section className="py-16 px-6 max-w-6xl mx-auto">
                 <h3 className="text-3xl font-bold text-center mb-12">Our Services</h3>
-                <div className="grid md:grid-cols-3 gap-8">
-                    <div className="p-6 rounded-2xl shadow-lg text-center bg-white border">
-                        <Car className="mx-auto text-yellow-500 mb-4" size={40} />
-                        <h4 className="font-semibold text-xl">Local Taxi</h4>
-                        <p className="mt-2">Comfortable city rides with trusted drivers.</p>
-                    </div>
-                    <div className="p-6 rounded-2xl shadow-lg text-center bg-white border">
-                        <MapPin className="mx-auto text-yellow-500 mb-4" size={40} />
-                        <h4 className="font-semibold text-xl">Outstation Trips</h4>
-                        <p className="mt-2">One-way & round trips across India.</p>
-                    </div>
-                    <div className="p-6 rounded-2xl shadow-lg text-center bg-white border">
-                        <ShieldCheck className="mx-auto text-yellow-500 mb-4" size={40} />
-                        <h4 className="font-semibold text-xl">Airport Pickup</h4>
-                        <p className="mt-2">On-time airport pickup & drop service.</p>
-                    </div>
-                </div>
+              <div className="grid md:grid-cols-3 gap-8">
+
+  <Link to="/local-taxi" className="group">
+    <div
+      className="
+        px-5 py-6 rounded-2xl text-center bg-white border
+        shadow-lg cursor-pointer
+        transition-all duration-300 ease-in-out
+        hover:-translate-y-2 hover:shadow-2xl hover:border-yellow-400
+      "
+    >
+      <Car
+        className="
+          mx-auto mb-4 text-yellow-500
+          transition-transform duration-300
+          group-hover:scale-110 group-hover:-translate-y-1
+        "
+        size={40}
+      />
+      <h4 className="font-semibold text-xl transition-colors group-hover:text-yellow-600">
+        Local Taxi
+      </h4>
+      <p className="mt-2 text-gray-600">
+        Comfortable city rides with trusted drivers.
+      </p>
+    </div>
+  </Link>
+
+  <Link to="/outstation" className="group">
+    <div
+      className="
+        p-6 rounded-2xl text-center bg-white border
+        shadow-lg cursor-pointer
+        transition-all duration-300 ease-in-out
+        hover:-translate-y-2 hover:shadow-2xl hover:border-yellow-400
+      "
+    >
+      <MapPin
+        className="
+          mx-auto mb-4 text-yellow-500
+          transition-transform duration-300
+          group-hover:scale-110 group-hover:-translate-y-1
+        "
+        size={40}
+      />
+      <h4 className="font-semibold text-xl transition-colors group-hover:text-yellow-600">
+        Outstation Trips
+      </h4>
+      <p className="mt-2 text-gray-600">
+        One-way & round trips across India.
+      </p>
+    </div>
+  </Link>
+
+  <Link to="/airport" className="group">
+    <div
+      className="
+        p-6 rounded-2xl text-center bg-white border
+        shadow-lg cursor-pointer
+        transition-all duration-300 ease-in-out
+        hover:-translate-y-2 hover:shadow-2xl hover:border-yellow-400
+      "
+    >
+      <ShieldCheck
+        className="
+          mx-auto mb-4 text-yellow-500
+          transition-transform duration-300
+          group-hover:scale-110 group-hover:-translate-y-1
+        "
+        size={40}
+      />
+      <h4 className="font-semibold text-xl transition-colors group-hover:text-yellow-600">
+        Airport Pickup
+      </h4>
+      <p className="mt-2 text-gray-600">
+        On-time airport pickup & drop service.
+      </p>
+    </div>
+  </Link>
+
+</div>
+
+
             </section>
 
 
@@ -102,12 +169,8 @@ export default function LandingPage() {
                 </div>
             </section>
 
-
-            {/* Footer */}
-            <footer className="bg-yellow-400 text-gray-900 text-center py-6">
-                <p>📞 Call / WhatsApp: +91 8077424137</p>
-                <p className="text-sm mt-2">© 2025 Happy Travels. All rights reserved.</p>
-            </footer>
+       
+    
         </div>
     );
 }
