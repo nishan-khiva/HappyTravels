@@ -130,7 +130,7 @@ export const BookingForm = () => {
           <div className="mt-5 text-sm text-gray-600 flex flex-wrap gap-3">
             <span className="font-semibold">24×7 Support</span>
             <span className="hidden sm:block w-px h-4 bg-gray-400"></span>
-            <span>+91 8077424137</span>
+            <span>+91 8077424137, 7500076396</span>
           </div>
         </motion.div>
 

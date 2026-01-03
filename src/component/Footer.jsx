@@ -56,7 +56,7 @@ export const Footer = () => {
             href="tel:+918077424137"
             className="flex items-center justify-center md:justify-start gap-2 text-yellow-400 font-semibold"
           >
-            <Phone size={16} /> +91 8077424137
+            <Phone size={16} /> +91 8077424137, 7500076396
           </a>
           <p className="text-sm text-gray-400 mt-2">
             Call or WhatsApp for instant booking
