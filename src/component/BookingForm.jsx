@@ -2,6 +2,8 @@ import React, { useState } from "react";
 // import LocationInput from "../component/LocationInput";
 import { motion } from "framer-motion";
 import axios from "axios";
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
 
 const cars = [
   {
@@ -132,11 +134,12 @@ export const BookingForm = () => {
               />
             </div>
 
-            <input
-              type="date"
-              value={date}
-              onChange={(e) => setDate(e.target.value)}
-              className="sm:w-[160px] p-3 border rounded-lg"
+            <DatePicker
+              selected={date}
+              onChange={(date) => setDate(date)}
+              dateFormat="dd/MM/yyyy"
+              placeholderText="DD/MM/YYYY"
+              className="p-3 border rounded-lg w-full"
             />
           </div>
 
@@ -151,8 +154,8 @@ export const BookingForm = () => {
               >
                 <span
                   className={`w-5 h-5 rounded-full border-2 flex items-center justify-center transition ${tripType === "oneway"
-                      ? "border-yellow-500"
-                      : "border-gray-400"
+                    ? "border-yellow-500"
+                    : "border-gray-400"
                     }`}
                 >
                   {tripType === "oneway" && (
@@ -172,8 +175,8 @@ export const BookingForm = () => {
               >
                 <span
                   className={`w-5 h-5 rounded-full border-2 flex items-center justify-center transition ${tripType === "round"
-                      ? "border-yellow-500"
-                      : "border-gray-400"
+                    ? "border-yellow-500"
+                    : "border-gray-400"
                     }`}
                 >
                   {tripType === "round" && (
