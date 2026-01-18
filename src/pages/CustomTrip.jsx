@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { MapContainer, TileLayer } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
-import LocationInput from "../component/LocationInput";
+// import LocationInput from "../component/LocationInput";
 // import MapPicker from "../component/MapPicker";
 import Navbar from "../component/Navbar";
 
@@ -25,7 +25,7 @@ export default function CustomTrip() {
                         </p>
 
                         <div className="space-y-4">
-                            <LocationInput
+                            {/* <LocationInput
                                 placeholder="Pickup Location"
                                 onSelect={(place) => setPickup(place)}
                             />
@@ -33,7 +33,7 @@ export default function CustomTrip() {
                             <LocationInput
                                 placeholder="Drop Location"
                                 onSelect={(place) => setDrop(place)}
-                            />
+                            /> */}
 
                             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                                 <input

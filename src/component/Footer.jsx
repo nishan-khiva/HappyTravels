@@ -5,7 +5,7 @@ import { Phone, Home } from "lucide-react";
 export const Footer = () => {
   return (
     <footer className="bg-gray-900 text-gray-200">
-      
+
       {/* Top Section */}
       <div className="max-w-6xl mx-auto px-4 py-10 grid md:grid-cols-3 gap-8 text-center md:text-left">
 
@@ -54,10 +54,16 @@ export const Footer = () => {
           <h4 className="font-semibold mb-3 text-white">Contact Us</h4>
           <a
             href="tel:+918077424137"
-            className="flex items-center justify-center md:justify-start gap-2 text-yellow-400 font-semibold"
+            className="flex flex-col items-center md:items-start gap-1 text-yellow-400 font-semibold"
           >
-            <Phone size={16} /> +91 8077424137, 7500076396
+            <div className="flex items-center gap-2">
+              <Phone size={16} />
+              <span>+91 8077424137</span>
+            </div>
+
+            <span className="pl-6">+91 7500076396</span>
           </a>
+
           <p className="text-sm text-gray-400 mt-2">
             Call or WhatsApp for instant booking
           </p>

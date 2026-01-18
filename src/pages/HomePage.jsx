@@ -1,19 +1,21 @@
-import { Phone, MessageCircle, Car, MapPin, ShieldCheck, UserCheck, DollarSign, Clock, Book } from "lucide-react";
+import { Phone, MessageCircle, Instagram, Facebook, Mail, Car, MapPin, ShieldCheck, UserCheck, DollarSign, Clock, Book } from "lucide-react";
 import { ImageSlider } from "../component/ImageSlider";
 import Navbar from "../component/Navbar";
 import { BookingForm } from "../component/BookingForm";
 import { Link } from "react-router-dom";
+import { motion } from "framer-motion";
+import { FaFacebookF, FaWhatsapp } from "react-icons/fa";
 
 export default function LandingPage() {
 
-    return (
-        <div className="font-sans text-gray-900 bg-white">
-            {/* Header */}
-            <header className="flex justify-between items-center w-full   bg-yellow-400">
-                <Navbar />
-            </header>
-            {/* Hero Section */}
-            <section className="bg-[#fdc700] text-gray-900 py-20 px-6 text-center">
+  return (
+    <div className="font-sans text-gray-900 bg-white">
+      {/* Header */}
+      <header className="flex justify-between items-center w-full   bg-yellow-400">
+        <Navbar />
+      </header>
+      {/* Hero Section */}
+      {/* <section className="bg-[#fdc700] text-gray-900 py-20 px-6 text-center">
                 <h2 className="text-4xl font-bold mb-4">All India Taxi Service</h2>
                 <p className="text-lg mb-6">Safe • Reliable • Affordable Rides Across India</p>
                 <a
@@ -22,155 +24,214 @@ export default function LandingPage() {
                 >
                     <MessageCircle /> Book on WhatsApp
                 </a>
-            </section>
+            </section> */}
 
-            <section>
-                <BookingForm />
-            </section>
+      <section className="bg-[#fdc700] text-gray-900 py-20 px-6 text-center">
+        <h2 className="text-4xl font-bold mb-4">All India Taxi Service</h2>
+        <p className="text-lg mb-10">
+          Safe • Reliable • Affordable Rides Across India
+        </p>
 
-            {/* Services */}
-            <section className="py-16 px-6 max-w-6xl mx-auto">
-                <h3 className="text-3xl font-bold text-center mb-12">Our Services</h3>
-              <div className="grid md:grid-cols-3 gap-8">
+        {/* Buttons */}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          className="grid grid-cols-2 sm:flex sm:justify-center gap-4"
+        >
+          {/* WhatsApp */}
+          <motion.a
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+            href="https://wa.me/8077424137"
+            className="flex items-center justify-center gap-2 bg-white px-5 py-3 rounded-2xl font-semibold shadow"
+          >
+            < FaWhatsapp size={22} className="text-green-600" />
+            WhatsApp
+          </motion.a>
 
-  <Link to="/local-taxi" className="group">
-    <div
-      className="
+          {/* Instagram */}
+          <motion.a
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+            href="https://www.instagram.com/satender13_/"
+            className="flex items-center justify-center gap-2 bg-white px-5 py-3 rounded-2xl font-semibold shadow"
+          >
+            <Instagram className="text-pink-600" />
+            Instagram
+          </motion.a>
+
+          {/* Facebook */}
+          <motion.a
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+            href="https://www.facebook.com/satender.singh.5602728/"
+            className="flex items-center justify-center gap-2 bg-white px-5 py-3 rounded-2xl font-semibold shadow"
+          >
+            <Facebook className="text-blue-600" />
+            Facebook
+          </motion.a>
+
+          {/* Email */}
+          <motion.a
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+            href="mailto:nishankhiva@gmail.com"
+            className="flex items-center justify-center gap-2 bg-white px-5 py-3 rounded-2xl font-semibold shadow"
+          >
+            <Mail className="text-red-600" />
+            Email
+          </motion.a>
+        </motion.div>
+      </section>
+
+      <section>
+        <BookingForm />
+      </section>
+
+      {/* Services */}
+      <section className="py-16 px-6 max-w-6xl mx-auto">
+        <h3 className="text-3xl font-bold text-center mb-12">Our Services</h3>
+        <div className="grid md:grid-cols-3 gap-8">
+
+          <Link to="/local-taxi" className="group">
+            <div
+              className="
         px-5 py-6 rounded-2xl text-center bg-white border
         shadow-lg cursor-pointer
         transition-all duration-300 ease-in-out
         hover:-translate-y-2 hover:shadow-2xl hover:border-yellow-400
       "
-    >
-      <Car
-        className="
+            >
+              <Car
+                className="
           mx-auto mb-4 text-yellow-500
           transition-transform duration-300
           group-hover:scale-110 group-hover:-translate-y-1
         "
-        size={40}
-      />
-      <h4 className="font-semibold text-xl transition-colors group-hover:text-yellow-600">
-        Local Taxi
-      </h4>
-      <p className="mt-2 text-gray-600">
-        Comfortable city rides with trusted drivers.
-      </p>
-    </div>
-  </Link>
+                size={40}
+              />
+              <h4 className="font-semibold text-xl transition-colors group-hover:text-yellow-600">
+                Local Taxi
+              </h4>
+              <p className="mt-2 text-gray-600">
+                Comfortable city rides with trusted drivers.
+              </p>
+            </div>
+          </Link>
 
-  <Link to="/outstation" className="group">
-    <div
-      className="
+          <Link to="/outstation" className="group">
+            <div
+              className="
         p-6 rounded-2xl text-center bg-white border
         shadow-lg cursor-pointer
         transition-all duration-300 ease-in-out
         hover:-translate-y-2 hover:shadow-2xl hover:border-yellow-400
       "
-    >
-      <MapPin
-        className="
+            >
+              <MapPin
+                className="
           mx-auto mb-4 text-yellow-500
           transition-transform duration-300
           group-hover:scale-110 group-hover:-translate-y-1
         "
-        size={40}
-      />
-      <h4 className="font-semibold text-xl transition-colors group-hover:text-yellow-600">
-        Outstation Trips
-      </h4>
-      <p className="mt-2 text-gray-600">
-        One-way & round trips across India.
-      </p>
-    </div>
-  </Link>
+                size={40}
+              />
+              <h4 className="font-semibold text-xl transition-colors group-hover:text-yellow-600">
+                Outstation Trips
+              </h4>
+              <p className="mt-2 text-gray-600">
+                One-way & round trips across India.
+              </p>
+            </div>
+          </Link>
 
-  <Link to="/airport" className="group">
-    <div
-      className="
+          <Link to="/airport" className="group">
+            <div
+              className="
         p-6 rounded-2xl text-center bg-white border
         shadow-lg cursor-pointer
         transition-all duration-300 ease-in-out
         hover:-translate-y-2 hover:shadow-2xl hover:border-yellow-400
       "
-    >
-      <ShieldCheck
-        className="
+            >
+              <ShieldCheck
+                className="
           mx-auto mb-4 text-yellow-500
           transition-transform duration-300
           group-hover:scale-110 group-hover:-translate-y-1
         "
-        size={40}
-      />
-      <h4 className="font-semibold text-xl transition-colors group-hover:text-yellow-600">
-        Airport Pickup
-      </h4>
-      <p className="mt-2 text-gray-600">
-        On-time airport pickup & drop service.
-      </p>
-    </div>
-  </Link>
+                size={40}
+              />
+              <h4 className="font-semibold text-xl transition-colors group-hover:text-yellow-600">
+                Airport Pickup
+              </h4>
+              <p className="mt-2 text-gray-600">
+                On-time airport pickup & drop service.
+              </p>
+            </div>
+          </Link>
 
-</div>
-
-
-            </section>
-
-
-            {/* Why Choose Us with Icons */}
-            <section className="bg-gray-50 py-16 px-6">
-                <h3 className="text-3xl font-bold text-center mb-10">Why Choose Happy Travels?</h3>
-                <div className="max-w-4xl mx-auto grid md:grid-cols-3 gap-6 text-center">
-                    <div className="bg-white p-6 rounded-xl shadow flex flex-col items-center gap-4">
-                        <UserCheck className="text-yellow-500" size={40} />
-                        <span> Verified Drivers</span>
-                    </div>
-                    <div className="bg-white p-6 rounded-xl shadow flex flex-col items-center gap-4">
-                        <DollarSign className="text-yellow-500" size={40} />
-                        <span> Transparent Pricing</span>
-                    </div>
-                    <div className="bg-white p-6 rounded-xl shadow flex flex-col items-center gap-4">
-                        <Clock className="text-yellow-500" size={40} />
-                        <span>24x7 aSupport</span>
-                    </div>
-                </div>
-            </section>
-            {/* Image Slider */}
-            <section className="py-16 bg-gray-50 px-12">
-                <h2 className="text-3xl font-bold text-center ">
-                    Our Happy Customers on the Road
-                </h2>
-                <p className="text-center text-gray-600 mb-8 ">
-                    Real journeys, real smiles — trusted by travelers across India.
-                </p>
-
-                <ImageSlider />
-            </section>
-
-
-            <section className="bg-gray-50 py-16 px-6">
-                <h2 className="text-3xl font-bold text-center mb-12">What Our Customers Say</h2>
-                <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
-                    <div className="bg-white p-6 rounded-xl shadow">
-                        <p>“Driver polite aur time pe tha. Ride comfortable!”</p>
-                        <h4 className="mt-4 font-semibold">Ramesh, Delhi</h4>
-                        <p>⭐⭐⭐⭐⭐</p>
-                    </div>
-                    <div className="bg-white p-6 rounded-xl shadow">
-                        <p>“Airport pickup perfect, best taxi service.”</p>
-                        <h4 className="mt-4 font-semibold">Anita, Mumbai</h4>
-                        <p>⭐⭐⭐⭐⭐</p>
-                    </div>
-                    <div className="bg-white p-6 rounded-xl shadow">
-                        <p>“Outstation trip easy booking via WhatsApp.”</p>
-                        <h4 className="mt-4 font-semibold">Vikram, Jaipur</h4>
-                        <p>⭐⭐⭐⭐⭐</p>
-                    </div>
-                </div>
-            </section>
-
-       
-    
         </div>
-    );
+
+
+      </section>
+
+
+      {/* Why Choose Us with Icons */}
+      <section className="bg-gray-50 py-16 px-6">
+        <h3 className="text-3xl font-bold text-center mb-10">Why Choose Happy Travels?</h3>
+        <div className="max-w-4xl mx-auto grid md:grid-cols-3 gap-6 text-center">
+          <div className="bg-white p-6 rounded-xl shadow flex flex-col items-center gap-4">
+            <UserCheck className="text-yellow-500" size={40} />
+            <span> Verified Drivers</span>
+          </div>
+          <div className="bg-white p-6 rounded-xl shadow flex flex-col items-center gap-4">
+            <DollarSign className="text-yellow-500" size={40} />
+            <span> Transparent Pricing</span>
+          </div>
+          <div className="bg-white p-6 rounded-xl shadow flex flex-col items-center gap-4">
+            <Clock className="text-yellow-500" size={40} />
+            <span>24x7 aSupport</span>
+          </div>
+        </div>
+      </section>
+      {/* Image Slider */}
+      <section className="py-16 bg-gray-50 px-12">
+        <h2 className="text-3xl font-bold text-center ">
+          Our Happy Customers on the Road
+        </h2>
+        <p className="text-center text-gray-600 mb-8 ">
+          Real journeys, real smiles — trusted by travelers across India.
+        </p>
+
+        <ImageSlider />
+      </section>
+
+
+      <section className="bg-gray-50 py-16 px-6">
+        <h2 className="text-3xl font-bold text-center mb-12">What Our Customers Say</h2>
+        <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+          <div className="bg-white p-6 rounded-xl shadow">
+            <p>“Driver polite aur time pe tha. Ride comfortable!”</p>
+            <h4 className="mt-4 font-semibold">Ramesh, Delhi</h4>
+            <p>⭐⭐⭐⭐⭐</p>
+          </div>
+          <div className="bg-white p-6 rounded-xl shadow">
+            <p>“Airport pickup perfect, best taxi service.”</p>
+            <h4 className="mt-4 font-semibold">Anita, Mumbai</h4>
+            <p>⭐⭐⭐⭐⭐</p>
+          </div>
+          <div className="bg-white p-6 rounded-xl shadow">
+            <p>“Outstation trip easy booking via WhatsApp.”</p>
+            <h4 className="mt-4 font-semibold">Vikram, Jaipur</h4>
+            <p>⭐⭐⭐⭐⭐</p>
+          </div>
+        </div>
+      </section>
+
+
+
+    </div>
+  );
 }

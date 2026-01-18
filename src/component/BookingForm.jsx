@@ -1,6 +1,7 @@
 import React, { useState } from "react";
-import LocationInput from "../component/LocationInput";
+// import LocationInput from "../component/LocationInput";
 import { motion } from "framer-motion";
+import axios from "axios";
 
 const cars = [
   {
@@ -29,122 +30,175 @@ const cars = [
 
 export const BookingForm = () => {
   const [tripType, setTripType] = useState("oneway");
-  const [pickup, setPickup] = useState(null);
-  const [drop, setDrop] = useState(null);
+  const [pickup, setPickup] = useState("");
+  const [drop, setDrop] = useState("");
   const [selectedCar, setSelectedCar] = useState(null);
   const [phone, setPhone] = useState("");
+  const [name, setName] = useState("");
+  const [date, setDate] = useState("");
+  const [loading, setLoading] = useState(false);
 
-  const handleSubmit = () => {
-    if (!pickup || !drop || !selectedCar || !phone) {
+  const handleSubmit = async () => {
+    if (!pickup || !drop || !phone || !name) {
       alert("Please fill all details");
       return;
     }
 
-    console.log({
+    const payload = {
+      name,
+      phone,
       pickup,
       drop,
-      car: selectedCar,
-      phone,
-    });
+      tripType: tripType === "oneway" ? "One Way" : "Round Trip",
+      date,
+    };
+
+    try {
+      setLoading(true);
+
+      const res = await axios.post(
+        "http://localhost:5000/api/booking",
+        payload
+      );
+
+      alert("Booking Successful ✅");
+      console.log("API Response:", res.data);
+
+      // reset form
+      setTripType("oneway");
+      setPickup("");
+      setDrop("");
+      setSelectedCar(null);
+      setPhone("");
+      setName("");
+      setDate("");
+
+    } catch (error) {
+      console.error(error);
+      alert("Booking Failed ❌");
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
-    <section className="bg-gray-50 py-10 overflow-hidden">
-      <div className="max-w-6xl mx-auto bg-white rounded-2xl shadow-xl grid grid-cols-1 lg:grid-cols-2 overflow-hidden">
+    <section className="bg-gray-50 py-6 px-2">
+      <div className="max-w-5xl mx-auto bg-white rounded-xl shadow-md">
 
-        {/* LEFT FORM – ANIMATED */}
         <motion.div
-          initial={{ x: -120, opacity: 0 }}
-          animate={{ x: 0, opacity: 1 }}
-          transition={{
-            duration: 0.6,
-            ease: "easeOut",
-          }}
-          className="p-5 sm:p-7 lg:p-8"
+          initial={{ y: 20, opacity: 0 }}
+          animate={{ y: 0, opacity: 1 }}
+          transition={{ duration: 0.4 }}
+          className="p-4 sm:p-6"
         >
-          <h2 className="text-2xl sm:text-3xl font-bold mb-2">
+          <h2 className="text-xl font-bold mb-4 text-center">
             Book Your Cab
           </h2>
-          <p className="text-gray-600 mb-6">
-            Safe • Reliable • Affordable
-          </p>
 
-          {/* Locations */}
-          <div className="space-y-4">
-            <LocationInput
-              placeholder="Pickup Location"
-              onSelect={setPickup}
-            />
-            <LocationInput
-              placeholder="Drop Location"
-              onSelect={setDrop}
+          {/* ROW 1 : NAME + PHONE */}
+          <div className="flex flex-col sm:flex-row gap-3 mb-3">
+            <input
+              type="text"
+              placeholder="Full Name"
+              value={name}
+              onChange={(e) => setName(e.target.value)}
+              className="flex-1 p-3 border rounded-lg focus:ring-2 focus:ring-yellow-400 outline-none"
             />
 
-            {/* Phone */}
             <input
               type="tel"
               placeholder="Mobile Number"
               value={phone}
               onChange={(e) => setPhone(e.target.value)}
-              className="w-full p-4 border rounded-xl focus:ring-2 focus:ring-yellow-400 outline-none"
+              className="flex-1 p-3 border rounded-lg focus:ring-2 focus:ring-yellow-400 outline-none"
             />
           </div>
 
-          {/* Cars */}
-          <h3 className="mt-6 font-semibold">Select Car</h3>
-          <div className="grid grid-cols-2 sm:grid-cols-3 gap-3 mt-3">
-            {cars.map((car) => (
-              <div
-                key={car.id}
-                onClick={() => setSelectedCar(car)}
-                className={`cursor-pointer border rounded-xl p-3 text-center transition
-                  ${selectedCar?.id === car.id
-                    ? "border-yellow-500 bg-yellow-50 shadow"
-                    : "hover:shadow"
-                  }
-                `}
+          {/* ROW 2 : PICKUP + DROP + DATE (ONE LINE) */}
+          <div className="flex flex-col sm:flex-row gap-3 mb-4">
+            <div className="flex-1">
+              <input
+                className="border w-full rounded py-3 px-2"
+                placeholder="Pickup Location"
+                onSelect={setPickup}
+              />
+            </div>
+
+            <div className="flex-1">
+              <input
+                className="border w-full rounded py-3 px-2"
+                placeholder="Drop Location"
+                onSelect={setDrop}
+              />
+            </div>
+
+            <input
+              type="date"
+              value={date}
+              onChange={(e) => setDate(e.target.value)}
+              className="sm:w-[160px] p-3 border rounded-lg"
+            />
+          </div>
+
+          {/* TRIP TYPE + SUBMIT */}
+          <div className="flex flex-col sm:flex-row items-center gap-3">
+            {/* Trip Type Selector */}
+            <div className="flex items-center gap-6">
+              {/* One Way */}
+              <label
+                onClick={() => setTripType("oneway")}
+                className="flex items-center gap-2 cursor-pointer"
               >
-                <img
-                  src={car.image}
-                  alt={car.name}
-                  className="h-12 sm:h-16 mx-auto object-contain"
-                />
-                <p className="text-sm font-semibold mt-1">{car.name}</p>
-                <span className="text-xs text-gray-500">{car.seats}</span>
-              </div>
-            ))}
-          </div>
+                <span
+                  className={`w-5 h-5 rounded-full border-2 flex items-center justify-center transition ${tripType === "oneway"
+                      ? "border-yellow-500"
+                      : "border-gray-400"
+                    }`}
+                >
+                  {tripType === "oneway" && (
+                    <motion.span
+                      layoutId="tripType"
+                      className="w-3 h-3 rounded-full bg-yellow-500"
+                    />
+                  )}
+                </span>
+                <span className="text-sm font-semibold">One Way</span>
+              </label>
 
-          {/* Date & Time */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-4">
-            <input type="date" className="w-full p-4 border rounded-xl" />
-            <input type="time" className="w-full p-4 border rounded-xl" />
-          </div>
+              {/* Round Trip */}
+              <label
+                onClick={() => setTripType("round")}
+                className="flex items-center gap-2 cursor-pointer"
+              >
+                <span
+                  className={`w-5 h-5 rounded-full border-2 flex items-center justify-center transition ${tripType === "round"
+                      ? "border-yellow-500"
+                      : "border-gray-400"
+                    }`}
+                >
+                  {tripType === "round" && (
+                    <motion.span
+                      layoutId="tripType"
+                      className="w-3 h-3 rounded-full bg-yellow-500"
+                    />
+                  )}
+                </span>
+                <span className="text-sm font-semibold">Round Trip</span>
+              </label>
+            </div>
 
-          {/* Button */}
-          <button className="w-full mt-6 bg-[#fdc700] hover:bg-yellow-500 text-white py-4 rounded-xl font-bold text-lg transition">
-            Submit
-          </button>
-
-          {/* Support */}
-          <div className="mt-5 text-sm text-gray-600 flex flex-wrap gap-3">
-            <span className="font-semibold">24×7 Support</span>
-            <span className="hidden sm:block w-px h-4 bg-gray-400"></span>
-            <span>+91 8077424137, 7500076396</span>
+            <button
+              onClick={handleSubmit}
+              disabled={loading}
+              className=" bg-green-700 hover:bg-green-900 px-3  sm:w-[10vw] text-white py-2 rounded-lg font-bold transition disabled:opacity-60"
+            >
+              {loading ? "Booking..." : "Book Now"}
+            </button>
           </div>
         </motion.div>
-
-        {/* RIGHT IMAGE */}
-        <div className="hidden lg:block relative">
-          <img
-            src="https://images.unsplash.com/photo-1525609004556-c46c7d6cf023"
-            alt="Taxi Service"
-            className="w-full h-full object-cover"
-          />
-          <div className="absolute inset-0 bg-black/30"></div>
-        </div>
       </div>
     </section>
   );
+
 };
 
