@@ -58,13 +58,13 @@ export const BookingForm = () => {
     try {
       setLoading(true);
 
-      const res = await axios.post(
-        "http://localhost:5000/api/booking",
-        payload
-      );
+      // const res = await axios.post(
+      //   "http://localhost:5000/api/booking",
+      //   payload
+      // );
 
-      alert("Booking Successful ✅");
-      console.log("API Response:", res.data);
+      alert("currently whatsapp booking availabe ");
+      // console.log("API Response:", res.data);
 
       // reset form
       setTripType("oneway");
