@@ -7,12 +7,13 @@ import { Localtaxi } from './pages/Localtaxi'
 import { Outstation } from './pages/OutStation'
 import { Airport } from './pages/AirportPickup'
 import { Footer } from './component/Footer'
-
+import { Toaster } from "react-hot-toast"
 
 function App() {
 
   return (
     <>
+      <Toaster position="top-right" />
       <Routes>
         <Route path='/' element={<LandingPage />} />
         <Route path='/home' element={<LandingPage />} />
@@ -24,7 +25,7 @@ function App() {
         <Route path="/outstation" element={<Outstation />} />
         <Route path="/airport" element={<Airport />} />
       </Routes>
-      <Footer/>
+      <Footer />
     </>
   )
 }

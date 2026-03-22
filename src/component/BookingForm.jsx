@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import axios from "axios";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
+import toast from "react-hot-toast";
 
 const cars = [
   {
@@ -42,7 +43,7 @@ export const BookingForm = () => {
 
   const handleSubmit = async () => {
     if (!pickup || !drop || !phone || !name) {
-      alert("Please fill all details");
+      toast.error("Please fill all details ❌");
       return;
     }
 
@@ -52,19 +53,21 @@ export const BookingForm = () => {
       pickup,
       drop,
       tripType: tripType === "oneway" ? "One Way" : "Round Trip",
-      date,
+      date: date ? date.toISOString() : "",
     };
 
     try {
       setLoading(true);
 
-      // const res = await axios.post(
-      //   "http://localhost:5000/api/booking",
-      //   payload
-      // );
+      const res = await axios.post(
+        "http://localhost:5000/api/booking",
+        payload
+      );
 
-      alert("currently whatsapp booking availabe ");
-      // console.log("API Response:", res.data);
+      console.log("API Response:", res.data);
+
+      // ✅ SUCCESS TOAST
+      toast.success("🚕 Your booking is submitted! We will contact you soon.");
 
       // reset form
       setTripType("oneway");
@@ -77,7 +80,9 @@ export const BookingForm = () => {
 
     } catch (error) {
       console.error(error);
-      alert("Booking Failed ❌");
+
+      // ❌ ERROR TOAST
+      toast.error("Booking Failed ❌ Try again");
     } finally {
       setLoading(false);
     }
@@ -122,15 +127,18 @@ export const BookingForm = () => {
               <input
                 className="border w-full rounded py-3 px-2"
                 placeholder="Pickup Location"
-                onSelect={setPickup}
+                value={pickup}
+                onChange={(e) => setPickup(e.target.value)}
               />
             </div>
 
             <div className="flex-1">
+
               <input
                 className="border w-full rounded py-3 px-2"
                 placeholder="Drop Location"
-                onSelect={setDrop}
+                value={drop}
+                onChange={(e) => setDrop(e.target.value)}
               />
             </div>
 
