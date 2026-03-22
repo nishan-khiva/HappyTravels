@@ -60,7 +60,7 @@ export const BookingForm = () => {
       setLoading(true);
 
       const res = await axios.post(
-        "http://localhost:5000/api/booking",
+        "https://happyserver-q8oh.onrender.com/api/booking",
         payload
       );
 
