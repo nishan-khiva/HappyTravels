@@ -60,7 +60,7 @@ export const BookingForm = () => {
       setLoading(true);
 
       const res = await axios.post(
-        "https://happyserver-q8oh.onrender.com/api/booking",
+        "https://happy-server-gamma.vercel.app/api/booking",
         payload
       );
 
