@@ -76,7 +76,7 @@ export default function LandingPage() {
           <motion.a
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
-            href="mailto:nishankhiva@gmail.com"
+            href="mailto:satendersingh615@gmail.com"
             className="flex items-center justify-center gap-2 bg-white px-5 py-3 rounded-2xl font-semibold shadow"
           >
             <Mail className="text-red-600" />
